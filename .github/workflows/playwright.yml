@@ -21,8 +21,8 @@ jobs:
       run: npm install  @playwright/test --save-dev
     - name: Run Playwright test
       run: npx playwright test
-    # - name: Generate Test Report
-    #   run: npx playwright show-report
+    - name: Generate Test Report
+      run: npx playwright show-report
     - uses: actions/upload-artifact@v3
       if: always()
       with:
