@@ -1,0 +1,19 @@
+{
+  "name": "ntu_ui_and_apis",
+  "version": "1.0.0",
+  "description": "in this project we will forming complete automation suite for NTU's APIs and UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "NTU api and UI "
+  },
+  "author": "waliullah Khan",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "dotenv": "^16.0.3"
+  }
+}
