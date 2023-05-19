@@ -23,7 +23,8 @@ lableClientName:'(//div[@class="col-md-3"]//label[@class="form-label"])[1]',
 selectClient:'(//select[@class="select_select__iHQgC form-select"])[1]',
 ChooseClient:'(//div[@class="mt-5 row"]//div[@class="col-md-3"]//select[@class="select_select__iHQgC form-select"]//option[@value="1"])[1]',
 labelStartingDate :'//div[@class="col-md-3 offset-md-0"]//label',
-selectStartingDate:'//input[@type="date"]',
+date: '//div[@class="col-md-3 offset-md-0"]//input[@type="date"]',
+selectStartingDate:'(//input[@type="date"])[1]',
 lableConsortiumPartner:'(//div[@class="col-md-3"]//label[@class="form-label"])[2]',
 SelectConsortiumPartner:'(//select[@class="select_select__iHQgC form-select"])[2]',
 chooseConsortiumPartner:"(//select[@class='select_select__iHQgC form-select'])[2]//option[@value='1']",
@@ -44,10 +45,11 @@ CreateCategoryBtn:'//div[@class="d-flex align-items-center mt-4 col-md-2 offset-
 labelExpertPosition:'(//div[@class="container-fluid"]//div[@class="mt-4  row"]//h5)[1]',
 labeleaddnewExpertPosition:'//div[@class="container-fluid"]//div[@class="mt-4  row"]//h5[@class="px-1"]',
 inputExpertPosition:'//div[@class="client_enterField__Kl0gu"]//input',
-clickAutomatedProject1:'//li[@class=" d-flex justify-content-between align-items-center"]//b[@class="text-capitalize px-3"][text()="Automated Project 1"]',
+AutomatedProject1:'//li[@class=" d-flex justify-content-between align-items-center"]//b[@class="text-capitalize px-3"][text()="Automated Project 1"]',
 WDSforNTu_client:'//div[@class="mt-2 row"]//div[@class="col-md-7"]//input[@type="number"]',
 labeltotalworkingdayInPromtAlert:'(//div[@class="modal-body"]//b)[1]',
 SaveBtnPromt:'//button[text()="Save "]      or    //button[@class="buttonCreate w-25 btn btn-primary"]',
 SavedCategory:'//span[@class="text-capitalize"]',
-createdByjens:'//div[@class="d-flex align-items-center pt-3 col-md-3"]//b[@class="text-capitalize"]'
+createdByjens:'//div[@class="d-flex align-items-center pt-3 col-md-3"]//b[@class="text-capitalize"]',
+AlertProjectSaved:'.swal2-toast-shown'
 }
