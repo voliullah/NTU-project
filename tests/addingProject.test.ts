@@ -1,6 +1,7 @@
 import { test,expect  ,chromium} from '@playwright/test';
 import dotenv from 'dotenv';
 const baseURL = 'http://54.154.82.253:3001/';
+import { testData } from './data/testData';
 
 
 import { generateWord } from './wordgenerator';
@@ -24,8 +25,8 @@ test.beforeEach(async ({ page }) => {
 
   // Wait for the login form to appear
   await page.waitForSelector('input[type=email]'); // Enter username and password
-  await page.fill('input[type=email]', 'jens@gmail.com');
-  await page.fill('input[type=password]', '123456');
+  await page.fill('input[type=email]',testData.Login.username);
+  await page.fill('input[type=password]', testData.Login.password);
 
   // Click the login button
   await page.click('button[type=submit]');
@@ -50,7 +51,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
   expect(elements.length).toBeGreaterThan(0);
 });
 
-  test.only('TC-011 Go to system and add project details ', async ({page}) => {
+  test('TC-011 Go to system and add project details ', async ({page}) => {
     await page.waitForNavigation
 
     // see if the placeholder of 'Project name " has been given the right name 
@@ -244,7 +245,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
     expect(retrievedValue).toBe(inputValue);
     await page.waitForTimeout(3000)
  })
- test.only('TC-008 go the already added project and add value to expert name , working days , fee rate eur and add it to the system ', async ({page}) => {
+ test('TC-008 go the already added project and add value to expert name , working days , fee rate eur and add it to the system ', async ({page}) => {
   await page.waitForLoadState()
 
   //click on the already added project 
@@ -362,7 +363,7 @@ test('TC-009 check the button "create category" and make sure its working',async
   expect(createCategoryBtn).toBeTruthy
   await createCategoryBtn.click 
 })
-test ('TC-010 check the button "create category" and make sure its working',async ({page}) => {
+test.only ('TC-010 check the button "create category" and make sure its working',async ({page}) => {
   await page.waitForLoadState()
 
   //click on the already added project 
@@ -370,8 +371,24 @@ test ('TC-010 check the button "create category" and make sure its working',asyn
   await automatedProject1.click()
   await page.waitForLoadState() 
 
-  //now 
-})
+  //check if the 'create category" button is enabled
+  const createCategoryBtn = await page.locator('//div[@class="d-flex align-items-center mt-4 col-md-2 offset-md-1"]//button[@class="w-100 buttonCreate btn btn-primary"]')
+  expect (createCategoryBtn).toBeTruthy
+  expect(createCategoryBtn).toBeEnabled
+  // Enable dialog event handling
+    await page.on('dialog', async (dialog) => {
+      // Assert that the alert is displayed
+      expect(dialog.type()).toBe('alert');
+      console.log(dialog.message())
+      await dialog.accept();
+    });
+
+  
+  // Click on the button that triggers the popup alert
+    await createCategoryBtn.click()
+
+    await page.waitForLoadState()
+});
 
 
 
