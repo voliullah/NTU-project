@@ -4,7 +4,7 @@ const baseURL = 'http://54.154.82.253:3001/';
 import { testData } from './data/testData';
 
 
-import { generateWord } from './wordgenerator';
+import { generateWord } from './data/wordgenerator';
 generateWord;
 
 
