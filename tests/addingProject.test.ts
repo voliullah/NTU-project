@@ -3,6 +3,14 @@ import dotenv from 'dotenv';
 const baseURL = 'http://54.154.82.253:3001/';
 
 
+import { generateWord } from './wordgenerator';
+generateWord;
+
+
+const generatedWord: string = generateWord();
+console.log(generatedWord);
+
+
 test(" TC-002 Go to NTU URL and check if it's working and also find out if the title has been given correctly ", async ({ page }) => {
   await page.goto(baseURL); 
   console.log(await page.title())
@@ -42,7 +50,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
   expect(elements.length).toBeGreaterThan(0);
 });
 
-  test('TC-003 Go to system and add project details ', async ({page}) => {
+  test.only('TC-011 Go to system and add project details ', async ({page}) => {
     await page.waitForNavigation
 
     // see if the placeholder of 'Project name " has been given the right name 
@@ -54,7 +62,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
 
     // enter something project name 
     await page.click('//input[@name="project_name"]')
-    await page.type('//input[@name="project_name"]','Automated Project 3',{delay : 100})
+    await page.type('//input[@name="project_name"]',generatedWord,{delay : 100})
 
     // now see that 'client's name' 's placeholder has been given the corrent name 
     expect (await page.locator('(//div[@class="col-md-3"]//label[@class="form-label"])[1]').textContent()).toBeTruthy()
@@ -96,12 +104,27 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
 
     // the create project button have spelling " 'Create Project' "
      expect (await createProjectBtn.textContent()).toBe('Create Project')
+ 
 
 
-    // now click the button (create project ) to create the project with the details above 
-    await createProjectBtn.click()
-    await page.waitForTimeout(3000)
+         // Find the button using the locator
+     
+     
+         // Click the button
+         await createProjectBtn.click();
+     
+         // Wait for the custom alert to appear
+         await page.waitForSelector('.swal2-toast-shown');
+     
+         // Retrieve the alert message
+         const alertElement = await page.waitForSelector('.swal2-toast-shown');
+         const alertMessage = await alertElement.textContent();
+     
+         // Verify the alert message
+         expect(alertMessage).toContain('The project has been successfully');
 
+
+     
     // check if the project has been added successfully 
     const automatedProject1= await page.locator('//li[@class=" d-flex justify-content-between align-items-center"]//b[@class="text-capitalize px-3"][text()="Automated Project 1"]')
     expect (automatedProject1).toBeEnabled()
@@ -109,7 +132,8 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
 
     //console the project name 
     console.log(await automatedProject1.textContent())
-    })
+    await page.waitForTimeout(3000)
+  })
     test('TC-004 go the added project and see if the spelling at the section are given correctly  ',async ({page}) => {
       await page.waitForLoadState()
 
@@ -220,7 +244,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
     expect(retrievedValue).toBe(inputValue);
     await page.waitForTimeout(3000)
  })
- test('TC--008 go the already added project and add value to expert name , working days , fee rate eur and add it to the system ', async ({page}) => {
+ test.only('TC-008 go the already added project and add value to expert name , working days , fee rate eur and add it to the system ', async ({page}) => {
   await page.waitForLoadState()
 
   //click on the already added project 
@@ -248,34 +272,106 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
 const workingDaysinput= await page.waitForSelector('(//div[@class="mt-2 yes col-md-3"]//input[@type="number"])[1]');
 
 // Enter a value into the input field
-const value = '300';
-await workingDaysinput.type(value,{delay:100});
+ const value = '300';
+ await workingDaysinput.type(value,{delay:100});
 
 // Retrieve the entered value from the input field
-const retrievedValueWDs = await workingDaysinput.evaluate((el: HTMLInputElement) => el.value);
+ const retrievedValueWDs = await workingDaysinput.evaluate((el: HTMLInputElement) => el.value);
 
-console.log('WDS added:',retrievedValueWDs)
+ console.log('WDS added:',retrievedValueWDs)
 // Validate the retrieved value
-expect(retrievedValueWDs).toBe(value);
+ expect(retrievedValueWDs).toBe(value);
 
 
 // Find the input field using XPath for fee rate EUR
-const inputFieldFeeRate = await page.waitForSelector('//div[@class="yes mt-2  col-md-3"]//input[@type="number"]');
+ const inputFieldFeeRate = await page.waitForSelector('//div[@class="yes mt-2  col-md-3"]//input[@type="number"]');
 
 // Enter a value into the input field
-const ValueEUR = '200';
-await inputFieldFeeRate.type(ValueEUR,{delay:100});
+ const ValueEUR = '200';
+ await inputFieldFeeRate.type(ValueEUR,{delay:100});
 
 // Retrieve the entered value from the input field
-const retrievedValueFeeRate = await inputFieldFeeRate.evaluate((el: HTMLInputElement) => el.value);
+ const retrievedValueFeeRate = await inputFieldFeeRate.evaluate((el: HTMLInputElement) => el.value);
 
 
 // Validate the retrieved value
-expect(retrievedValueFeeRate).toBe(ValueEUR);
-await page.waitForTimeout(3000)
-console.log('Fee rate ( EUR ) added :',retrievedValueFeeRate)
-})
+ expect(retrievedValueFeeRate).toBe(ValueEUR);
+ await page.waitForTimeout(3000)
+ console.log('Fee rate ( EUR ) added :',retrievedValueFeeRate)
 
+//add the details added by clicking the create 'category button'.
+ const createCategoryBtn= await page.locator('//div[@class="d-flex align-items-center mt-4 col-md-2 offset-md-1"]//button[@class="w-100 buttonCreate btn btn-primary"]')
+ await createCategoryBtn.click()
+ await page.locator('//div[@class="d-flex align-items-center mt-4 col-md-2 offset-md-1"]//button[@class="w-100 buttonCreate btn btn-primary"]').click
+ await page.waitForTimeout(2000)
+
+//add working days for NTU client 
+ const workingdaysForNTU = await page.locator('//div[@class="mt-2 row"]//div[@class="col-md-7"]//input[@type="number"]')
+ await workingdaysForNTU.type('100')
+
+
+//now check if the total working days at prompt are written correctly 
+ const totalworkingDaysPrompt=await page.locator('(//div[@class="modal-body"]//b)[1]')
+ const totalWDsCount= await totalworkingDaysPrompt.textContent()
+ console.log ('totalWDs at Prompt  for NTU : ',totalWDsCount)
+ if (totalworkingDaysPrompt && totalWDsCount !== '300') {
+  throw new Error('Error : WDs at promt couldnt be validated!.');
+}
+
+ //now save the changes and put some validation on the "save" button at prompt 
+
+  await page.click('//button[@class="buttonCreate w-25 btn btn-primary"]');
+
+
+ // Get the text content of the button
+  const SavebuttonPrompt = await page.textContent('//button[@class="buttonCreate w-25 btn btn-primary"]');
+
+ // Assert that the button text content is "save"
+  expect(SavebuttonPrompt).toBe('Save loading...');
+
+
+  // Wait for the saved object to appear
+   await page.waitForSelector('//span[@class="text-capitalize"]');
+
+  // Get the text content of the saved object
+   const savedCategoryText = await page.textContent('//span[@class="text-capitalize"]');
+
+  // Assert that the saved object text content is as expected
+   expect(savedCategoryText).toBe('Category 1');
+   console.log('saved category is :',savedCategoryText)
+
+  // now check if the project has been added 
+    const CreatedByJens= await page.locator('//div[@class="d-flex align-items-center pt-3 col-md-3"]//b[@class="text-capitalize"]')
+    const jenstextatProjectDetail =await CreatedByJens.textContent()
+    expect (jenstextatProjectDetail).toBe('jens')
+
+
+})
+test('TC-009 check the button "create category" and make sure its working',async ({page}) => {
+  await page.waitForLoadState()
+
+  //click on the already added project 
+  const automatedProject1= await page.locator('//li[@class=" d-flex justify-content-between align-items-center"]//b[@class="text-capitalize px-3"][text()="Automated Project 1"]')
+  await automatedProject1.click()
+  await page.waitForLoadState() 
+
+  //put some assertions on the button
+  const createCategoryBtn= await page.locator('//div[@class="d-flex align-items-center mt-4 col-md-2 offset-md-1"]//button[@class="w-100 buttonCreate btn btn-primary"]')
+  expect(await createCategoryBtn.textContent()).toBe('Create Category')
+  expect(await createCategoryBtn).toBeEnabled
+  expect(createCategoryBtn).toBeTruthy
+  await createCategoryBtn.click 
+})
+test ('TC-010 check the button "create category" and make sure its working',async ({page}) => {
+  await page.waitForLoadState()
+
+  //click on the already added project 
+  const automatedProject1= await page.locator('//li[@class=" d-flex justify-content-between align-items-center"]//b[@class="text-capitalize px-3"][text()="Automated Project 1"]')
+  await automatedProject1.click()
+  await page.waitForLoadState() 
+
+  //now 
+})
 
 
 
