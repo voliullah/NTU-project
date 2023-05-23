@@ -380,14 +380,22 @@ test('TC-010 check the button "create category" and make sure its working',async
 
     await page.waitForLoadState()
 });
-
-
-
-    
-
-
-
-
-
-
+test.only ( ' add expert positions and check spell mistakes ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  await page.click(locator.labeleaddnewExpertPosition)
+  await page.click(locator.inputExpertPosition)
+  await page.type(locator.inputExpertPosition,'Expert Position 1')
+  await page.click(locator.saveEcpertPosition)
+})
+test ('check the spelling mistakes at expert position ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtexpertPosition = await page.locator(locator.labelExpertPosition).textContent()
+  expect (textAtexpertPosition).toBe('Expert Positions')
+  const textAtAddNew=await page.locator(locator.labeleaddnewExpertPosition).textContent()
+  console.log(textAtAddNew)
+  console.log(textAtexpertPosition)
+  expect (textAtAddNew).toBe('Add New') 
+})
   
