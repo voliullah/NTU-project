@@ -51,5 +51,6 @@ labeltotalworkingdayInPromtAlert:'(//div[@class="modal-body"]//b)[1]',
 SaveBtnPromt:'//button[text()="Save "]      or    //button[@class="buttonCreate w-25 btn btn-primary"]',
 SavedCategory:'//span[@class="text-capitalize"]',
 createdByjens:'//div[@class="d-flex align-items-center pt-3 col-md-3"]//b[@class="text-capitalize"]',
-AlertProjectSaved:'.swal2-toast-shown'
+AlertProjectSaved:'.swal2-toast-shown',
+alertLoginPage: '//div[@class="swal2-container swal2-top swal2-backdrop-show"]'
 }

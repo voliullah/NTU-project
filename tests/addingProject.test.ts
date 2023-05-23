@@ -91,7 +91,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
         console.log('Date has not been chosen or does not match the expected value.');
       }
     // check if the consoritum partner's spelling is written correct 
-    const textAtConsortiumPartner = await page.locator('locator.lableConsortiumPartner')
+    const textAtConsortiumPartner = await page.locator(locator.lableConsortiumPartner)
     await textAtConsortiumPartner.textContent()
     expect (await textAtConsortiumPartner.textContent()).toBe('Consortium partners')
 
@@ -232,8 +232,7 @@ test('TC-003 go to the page and retrieve all the projects added ', async ({ page
   
   // Retrieve the entered value from the input field
     const retrievedValue = await inputField.evaluate((el: HTMLInputElement) => el.value);
-
-  
+     
     // Validate the retrieved value
     expect(retrievedValue).toBe(inputValue);
     await page.waitForTimeout(3000)
