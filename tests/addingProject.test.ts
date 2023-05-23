@@ -380,7 +380,7 @@ test('TC-010 check the button "create category" and make sure its working',async
 
     await page.waitForLoadState()
 });
-test.only ( ' add expert positions and check spell mistakes ',async ({page}) => {
+test ( ' add expert positions and check spell mistakes ',async ({page}) => {
   await page.goto(locator.BaseURL)
   await page.click(locator.AutomatedProject1)
   await page.click(locator.labeleaddnewExpertPosition)
@@ -398,4 +398,47 @@ test ('check the spelling mistakes at expert position ',async ({page}) => {
   console.log(textAtexpertPosition)
   expect (textAtAddNew).toBe('Add New') 
 })
+test('check the spell mistakes at "Expert Name" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtexpertName=await page.locator(locator.labelExpertName).textContent()
+  console.log(textAtexpertName)
+  expect(textAtexpertName).toBe('Expert Name')
   
+})
+test('check the spell mistakes at "Expert" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtexpert=await page.locator(locator.labelExpert).textContent()
+  console.log(textAtexpert)
+  expect(textAtexpert).toBe('Expert') 
+})
+test('check the spell mistakes at "Category" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtCategory=await page.locator(locator.labelCategory).textContent()
+  console.log(textAtCategory)
+  expect(textAtCategory).toBe('Category') 
+})
+test('check the spell mistakes at "Position" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtPosition=await page.locator(locator.labelPosition).textContent()
+  console.log(textAtPosition)
+  expect(textAtPosition).toBe('Position') 
+})
+test('check the spell mistakes at "Working Days Allocated" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtWorkingDaysAllocated=await page.locator(locator.labelworkingDaysAllocated).textContent()
+  console.log(textAtWorkingDaysAllocated)
+  expect(textAtWorkingDaysAllocated).toBe('Working Days Allocated') 
+})
+test('check the spell mistakes at "ROA" in project details ',async ({page}) => {
+  await page.goto(locator.BaseURL)
+  await page.click(locator.AutomatedProject1)
+  const textAtROA=await page.locator(locator.labelROA).textContent()
+  console.log(textAtROA)
+  expect(textAtROA).toBe('ROA') 
+})
+

@@ -35,7 +35,6 @@ labelExpertName:'(//div[@class="yes mt-2  col-md-3"]//label[@class="form-label"]
 labelCategoryName:'//div[@class="yes mt-2 col-md-3"]//label[@class="form-label"]',
 inputCategoryName :'//div[@class="yes mt-2 col-md-3"]//input[@class="form-control"]',
 labelworkingDays:'(//div[@class="mt-2 yes col-md-3"]//label[@class="form-label"])[1]',
-labelworkingDaysAllocated:'(//div[@class="mt-2 yes col-md-3"]//label[@class="form-label"])[2]',
 inputWorkingDays:'(//div[@class="mt-2 yes col-md-3"]//input[@type="number"])[1]',
 inputWorkingDaysAllocated:'(//div[@class="mt-2 yes col-md-3"]//input[@type="number"])[2]',
 labeExpert:'(//div[@class="row"]//div[@class="mt-4 row"]//h5)[2]',
@@ -53,7 +52,12 @@ SavedCategory:'//span[@class="text-capitalize"]',
 createdByjens:'//div[@class="d-flex align-items-center pt-3 col-md-3"]//b[@class="text-capitalize"]',
 AlertProjectSaved:'.swal2-toast-shown',
 alertLoginPage: '//div[@class="swal2-container swal2-top swal2-backdrop-show"]',
-saveEcpertPosition : '.client_enterField__Kl0gu > div > svg'
-
+saveEcpertPosition : '.client_enterField__Kl0gu > div > svg',
+labelExpert : '(//div[@class="mt-4 row"]//h5)[2]',
+labelCategory : '//div[@class="mt-2 col-md-3"]//label[@class="form-label"]',
+labelPosition : '(//div[@class="mt-2  col-md-3"]//label[@class="form-label"])[1]',
+labelPartners : '//div[@class=" mt-2  col-md-3"]//label[@class="form-label"]',
+labelworkingDaysAllocated:'(//div[@class="mt-2 yes col-md-3"]//label[@class="form-label"])[2]',
+labelROA : '(//div[@class="mt-2  col-md-3"]//label[@class="form-label"])[2]',
 }
 //button[text()="Save "]      or    
