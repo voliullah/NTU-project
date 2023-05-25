@@ -15,8 +15,8 @@ export default defineConfig({
   use : {
     actionTimeout : 20000
   },
-  testDir: './tests',
-  // testMatch : '/Users/apple/Desktop/ NTU project/tests/addingProject.test.ts',
+  // testDir: './tests',
+  testMatch : '/Users/apple/Desktop/ NTU project/tests/addAamirTest.test.ts',
  
 
   // testMatch :'',
