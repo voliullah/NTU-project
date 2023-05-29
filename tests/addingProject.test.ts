@@ -381,30 +381,22 @@ test('TC--007 go the already added project and add Fee rarte EUR under expect ca
   const valueFeeBudget = await page.textContent(locator.FeeBudgetValue)
   expect (valueFeeBudget).toBe('60000')
  })
- test.only ('value to project direct cost estimation',async ({page}) => {
+ test('value to project direct cost estimation',async ({page}) => {
 
   await page.goto(locator.BaseURL)
   await page.click(locator.AutomatedProject1)
-  await page.getByRole('row', { name: 'Office administrator contracted by lead partner' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Office administrator contracted by lead partner' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Office Equipment' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Office Equipment' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Office Running Cost' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Office Running Cost' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Telecommunication/Internet' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Telecommunication/Internet' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Car/Local Transport Costs' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Car/Local Transport Costs' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Car/Local Transport Cost Driver' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Car/Local Transport Cost Driver' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Translation and Interpretation Services' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Translation and Interpretation Services' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Office Rent' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Office Rent' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Leader\'s MF' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Leader\'s MF' }).getByPlaceholder('00').fill('100');
-  await page.getByRole('row', { name: 'Contingency' }).getByPlaceholder('00').click();
-  await page.getByRole('row', { name: 'Contingency' }).getByPlaceholder('00').fill('100');
+  const entry100= '100'
+  await page.fill(locator.InputOfficeadministratorcontractedbyleadpartner,entry100)
+  await page.fill(locator.InputOfficeEquipment,entry100)
+  await page.fill(locator.InputOfficeRunningCost,entry100)
+  await page.fill(locator.InputTelecommunicationInternet,entry100)
+  await page.fill(locator.InputCarLocalTransportCosts,entry100)
+  await page.fill(locator.InputCarLocalTransportCostDriver,entry100)
+  await page.fill(locator.InputTranslationandInterpretationServices,entry100)
+  await page.fill(locator.InputOfficeRent,entry100)
+  await page.fill(locator.InputLeadersMF,entry100)
+  await page.fill(locator.InputContingency,entry100)
+  await page.waitForTimeout(3000)
   
  })
  

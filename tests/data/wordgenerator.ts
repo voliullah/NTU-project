@@ -17,5 +17,6 @@ export function generateWord(): string {
     word += vowel + consonant;
   
     return word;
+    
   }
   

@@ -66,10 +66,17 @@ SelectROA : '(//div[@class="mt-2  col-md-3"]//select[@class="select_select__iHQg
 selectPartners : '//div[@class=" mt-2  col-md-3"]//select[@class="select_select__iHQgC form-select"]',
 inputWorkingDaysAllocated:'(//div[@class="mt-2 yes col-md-3"]//input[@type="number"])[2]',
 saveExpert :'//div[@class="d-flex align-items-center mt-4 col-md-2"]//button[@class="w-100 buttonCreate btn btn-primary"]',
-
 locatorzohaib : '//div[@class="col"]//h5',
 FeeBudgetValue :'//div[@class="col-md-12"]//table[@class="table_project"]//tr[@class="body-border"]//td//div[@class="text-row"]//h5[text()="60000"]',
-
-
+InputOfficeadministratorcontractedbyleadpartner :  '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[1]',
+InputOfficeEquipment :  '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[2]',
+InputOfficeRunningCost : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[3]',
+InputTelecommunicationInternet : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[4]' ,
+InputCarLocalTransportCosts : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[5]',
+InputCarLocalTransportCostDriver : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[6]',
+InputTranslationandInterpretationServices : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[7]',
+InputOfficeRent : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[8]',
+InputLeadersMF : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[9]',
+InputContingency : '(//div[@class="text-row"]//div[@class="inputt_inputField__GjWBW"])[10]'
 }
 //button[text()="Save "]      or    
